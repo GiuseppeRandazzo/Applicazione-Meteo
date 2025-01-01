@@ -4,14 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Applicazione Meteo</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./Style.css" />
   </head>
   <body>
     <div id="weather-container">
       <h2>Applicazione Meteo</h2>
-      <input type="text" id="city" placeholder="Inserisci la città" />
+      <input type="text" id="città" placeholder="Inserisci la città" />
       <button onclick="getWeather()">Search</button>
-      <img id="weather_icon" alt="Weather Icon" />
+
+      <img id="weather-icon" alt="Weather Icon" />
 
       <div id="temp-div"></div>
 
@@ -19,5 +20,6 @@
 
       <div id="hourly-forecast"></div>
     </div>
+    <script src="./Script.js"></script>
   </body>
 </html>
