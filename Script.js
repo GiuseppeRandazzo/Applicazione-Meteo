@@ -28,7 +28,9 @@ function getWeather() {
     })
     .catch((error) => {
       console.error("Errore nel recupero dei dati meteo attuali:", error);
-      alert("Errore nel recupero dei dati meteo attuali. Riprovare.");
+      alert(
+        "Errore nel recupero dei dati meteo attuali. Per favore riprovare."
+      );
     });
 
   function displayWeather(data) {
