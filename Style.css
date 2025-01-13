@@ -13,7 +13,7 @@ body {
   max-width: 400px;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 8px 32 px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
@@ -22,13 +22,13 @@ body {
 h2,
 label,
 p {
-  color: #fff;
+  color: #f0f0f0;
   margin: 8px 0;
 }
 
 input {
   width: calc(100% - 16px);
-  padding: 8px;
+  padding: 10px;
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid white;
@@ -38,22 +38,24 @@ input {
 button {
   background: #debff4;
   color: white;
-  padding: 10px;
+  padding: 12px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   margin-top: 20px;
   width: 100px;
   font-size: 15px;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
   background: #8b48d7;
+  transform: scale(1.05);
 }
 
 #temp-div {
   font-size: 60px;
-  margin-top: -30px;
+  margin-top: 0;
 }
 
 #weather-info {
@@ -64,7 +66,6 @@ button:hover {
   width: 200px;
   height: 200px;
   margin: 0 auto 10px;
-  margin-bottom: 0;
   display: none;
 }
 
@@ -75,6 +76,7 @@ button:hover {
   display: flex;
   gap: 10px;
   padding: 10px 0;
+  scroll-behavior: smooth;
 }
 
 .hourly-item {
@@ -99,4 +101,24 @@ button:hover {
 #hourly-heading {
   color: #fff;
   margin-top: 10px;
+}
+
+@media (max-width: 420px) {
+  #weather-container {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  button {
+    width: 80px;
+    font-size: 14px;
+  }
+
+  #temp-div {
+    font-size: 50px;
+  }
+
+  #weather-info {
+    font-size: 18px;
+  }
 }
