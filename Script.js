@@ -1,5 +1,5 @@
 function getWeather() {
-  const apiKey = "26c10b31060598ce867845631db6edd7";
+  const apikey = "901df8338da2505e2bb3e5b51a0d3c6a";
   const city = document.getElementById("city").value;
 
   if (!city) {
@@ -18,7 +18,9 @@ function getWeather() {
     })
     .catch((error) => {
       console.error("Errore nel recupero dei dati meteo attuali:", error);
-      alert("Errore nel recupero dei dati meteo attuali. Riprovare.");
+      alert(
+        "Errore nel recupero dei dati meteo attuali. Per favore riprovare."
+      );
     });
 
   fetch(forecastUrl)
@@ -42,7 +44,7 @@ function getWeather() {
     // Clear previous content
     weatherInfoDiv.innerHTML = "";
     hourlyForecastDiv.innerHTML = "";
-    tempDivInfo.inneHTML = "";
+    tempDivInfo.innerHTML = "";
 
     if (data.cod === "404") {
       weatherInfoDiv.innerHTML = `<p>${data.message}</p>`;
@@ -50,7 +52,7 @@ function getWeather() {
       const cityName = data.name;
       const temperature = Math.round(data.main.temp - 273.15);
       const description = data.weather[0].description;
-      const iconCode = data.Weather[0].icon;
+      const iconCode = data.weather[0].icon;
       const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@4x.png`;
 
       const temperatureHTML = `<p>${temperature}°C</p>`;
@@ -69,11 +71,9 @@ function getWeather() {
     }
   }
 
-  function displayHourForecast(hourlyData) {
+  function displayHourlyForecast(hourlyData) {
     const hourlyForecastDiv = document.getElementById("hourly-forecast");
     const next24Hours = hourlyData.slice(0, 8);
-
-    let hourlyForecastHtml = "";
 
     next24Hours.forEach((item) => {
       const dateTime = new Date(item.dt * 1000);
@@ -82,16 +82,16 @@ function getWeather() {
       const iconCode = item.weather[0].icon;
       const iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
 
-      hourlyForecastHtml += `
+      const hourlyItemHtml = `
           <div class="hourly-item">
               <span>${hour}:00</span>
               <img src="${iconUrl}" alt="Hourly Weather Icon">
               <span>${temperature}°C</span>
           </div>
       `;
-    });
 
-    hourlyForecastDiv.innerHTML = hourlyForecastHtml;
+      hourlyForecastDiv.innerHTML += hourlyItemHtml;
+    });
   }
 
   function showImage() {
