@@ -1,5 +1,5 @@
 function getWeather() {
-  const apikey = "901df8338da2505e2bb3e5b51a0d3c6a";
+  const apikey = "LA-TUA-API-KEY-QUI"; // Inserire la propria API key
 
   const weatherTranslations = {
     "clear sky": "cielo sereno",
