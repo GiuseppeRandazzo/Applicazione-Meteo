@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background: #8c52ff;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -17,6 +23,7 @@ body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 h2,
@@ -35,8 +42,13 @@ input {
   margin-top: 20px;
 }
 
+input:focus {
+  outline: 2px solid #8b48d7;
+  border-color: #8b48d7;
+}
+
 button {
-  background: #debff4;
+  background: #8b48d7; /* Colore più scuro per miglior contrasto */
   color: white;
   padding: 12px;
   border: none;
@@ -48,8 +60,19 @@ button {
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
+button:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
 button:hover {
-  background: #8b48d7;
+  background: #6b35a8; /* Versione più scura per hover */
   transform: scale(1.05);
 }
 
@@ -67,6 +90,7 @@ button:hover {
   height: 200px;
   margin: 0 auto 10px;
   display: none;
+  transition: opacity 0.3s ease;
 }
 
 #hourly-forecast {
@@ -77,6 +101,18 @@ button:hover {
   gap: 10px;
   padding: 10px 0;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+}
+
+#hourly-forecast::-webkit-scrollbar {
+  height: 6px;
+}
+
+#hourly-forecast::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
 }
 
 .hourly-item {
@@ -103,6 +139,18 @@ button:hover {
   margin-top: 10px;
 }
 
+#loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease;
+}
+
 @media (max-width: 420px) {
   #weather-container {
     max-width: 90%;
@@ -120,5 +168,32 @@ button:hover {
 
   #weather-info {
     font-size: 18px;
+  }
+
+  #weather-icon {
+    width: 150px;
+    height: 150px;
+  }
+
+  .hourly-item {
+    width: 70px;
+    padding: 8px;
+  }
+}
+
+@media (max-height: 600px) {
+  body {
+    height: auto;
+    min-height: 100vh;
+    padding: 20px 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

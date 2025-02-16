@@ -1,25 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
+  <!-- Cambiato in "it" dato che l'app è in italiano -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Applicazione meteo per controllare le condizioni meteorologiche" />
     <title>App Meteo</title>
     <link rel="stylesheet" href="./Style.css" />
   </head>
   <body>
-    <div id="weather-container">
-      <h2>App Meteo</h2>
-      <input type="text" id="city" placeholder="Inserisci la città" />
-      <button onclick="getWeather()">Cerca</button>
+    <main id="weather-container">
+      <h1>App Meteo</h1>
+      <!-- Cambiato da h2 a h1 perché è il titolo principale -->
+      <form onsubmit="getWeather(); return false;">
+        <!-- Aggiunto form per migliore accessibilità -->
+        <input
+          type="text"
+          id="city"
+          placeholder="Inserisci la città"
+          aria-label="Inserisci il nome della città" />
+        <button type="submit">Cerca</button>
+      </form>
 
-      <img id="weather-icon" alt="Weather Icon" />
+      <img id="weather-icon" alt="Icona condizioni meteo" />
 
-      <div id="temp-div"></div>
+      <div id="temp-div" aria-live="polite"></div>
 
-      <div id="weather-info"></div>
+      <div id="weather-info" aria-live="polite"></div>
 
-      <div id="hourly-forecast"></div>
-    </div>
+      <div id="hourly-forecast" aria-live="polite"></div>
+    </main>
     <script src="./Script.js"></script>
   </body>
 </html>
